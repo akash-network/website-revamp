@@ -22,24 +22,6 @@ interface Props {
 
 const { disableSticky } = Astro.props;
 
-const networkItems = [
-  {
-    title: "About Akash",
-    description: "Discover the story behind Akash and how it works",
-    link: "/about/general-information/",
-  },
-  {
-    title: "Akash Stats",
-    description:
-      "Get insights into the latest statistics about the Akash Network",
-    link: "https://stats.akash.network/",
-  },
-  {
-    title: "AKT Token",
-    description: "Understand the role of the $AKT token in the Akash ecosystem",
-    link: "/token",
-  },
-];
 ---
 
 <header
@@ -60,7 +42,7 @@ ${disableSticky ? "" : "sticky top-0 z-[30]"}
       <div
         class="mt-1 hidden lg:flex lg:w-full lg:justify-center lg:gap-x-[20px] xl:gap-x-[24px]"
       >
-        <PopOverNavItem client:load subItems={networkItems} />
+        <PopOverNavItem client:load />
 
         <NavLink href="/development/welcome/" currentPath={pathname}>
           Development

@@ -7,11 +7,11 @@ import {
 } from "@headlessui/react";
 import { Fragment, useState } from "react";
 
-import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import { ChartBarIcon, ChevronDownIcon, InformationCircleIcon } from "@heroicons/react/20/solid";
 import { ArrowUpRight } from "lucide-react";
+import { networkItems } from "./constants";
 
-const PopOverNavItem = ({ subItems }: any) => {
-  console.log(subItems);
+const PopOverNavItem = () => {
 
   return (
     <Menu as="div" className="relative inline-block text-left">
@@ -35,33 +35,35 @@ const PopOverNavItem = ({ subItems }: any) => {
         leaveTo="transform opacity-0 scale-95"
       >
         <Menu.Items className="absolute left-0 z-10 mt-4 w-[304px] origin-top-right divide-y rounded-xl border  bg-background2 focus:outline-none">
-          <div className="space-y-4 px-6 py-6">
-            {subItems.map((item: any, i: any) => {
+          <div className="space-y-4 p-3">
+            {networkItems.map((item: any, i: any) => {
               return (
                 <Menu.Item key={i}>
                   {({ active }) => (
-                    <a
-                      href={item.link}
-                      target={item.link.startsWith("http") ? "_blank" : "_self"}
-                      className={`block  cursor-pointer p-2 font-semibold   ${
-                        active ? "" : ""
-                      } `}
-                    >
-                      <p className="flex items-center text-sm font-bold text-foreground ">
-                        {item.title}
-                        {item.link.startsWith("http") ? (
-                          <ArrowUpRight
-                            className="ml-1 inline-block"
-                            size={16}
-                          />
-                        ) : (
-                          ""
-                        )}
-                      </p>
-                      <p className="mt-1 text-sm font-normal text-para">
-                        {item.description}
-                      </p>
-                    </a>
+                    <div className="flex items-start p-2 rounded-lg hover:bg-[#f9fafb] cursor-pointer">
+                      <span className="w-[40px] mr-3 mt-1">{item.icon}</span>
+                      <a
+                        href={item.link}
+                        target={item.link.startsWith("http") ? "_blank" : "_self"}
+                        className={`block font-semibold   ${active ? "" : ""
+                          } `}
+                      >
+                        <p className="flex items-center text-sm font-bold text-foreground ">
+                          {item.title}
+                          {item.link.startsWith("http") ? (
+                            <ArrowUpRight
+                              className="ml-1 inline-block"
+                              size={16}
+                            />
+                          ) : (
+                            ""
+                          )}
+                        </p>
+                        <p className="mt-1 text-sm font-normal text-para">
+                          {item.description}
+                        </p>
+                      </a>
+                    </div>
                   )}
                 </Menu.Item>
               );
